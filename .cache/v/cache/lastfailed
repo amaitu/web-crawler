@@ -1,0 +1,5 @@
+{
+  "tests/test_crawler.py": true, 
+  "tests/test_helpers.py": true, 
+  "tests/test_validators.py": true
+}
