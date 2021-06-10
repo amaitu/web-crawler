@@ -5,7 +5,7 @@ import pytest
 from web_crawler.helpers import convert_relative_to_absolute_url, request_document
 
 
-@patch('web_crawler.helpers.requests.get')
+@patch("web_crawler.helpers.requests.get")
 def test_request_document_ok(mock_get):
     # Arrange:
     url = "https://example.com"
@@ -23,7 +23,7 @@ def test_request_document_ok(mock_get):
     assert result == html
 
 
-@patch('web_crawler.helpers.requests.get')
+@patch("web_crawler.helpers.requests.get")
 def test_request_document_ok_invalid_content_type(mock_get):
     # Arrange:
     url = "https://example.com"
@@ -41,7 +41,7 @@ def test_request_document_ok_invalid_content_type(mock_get):
     assert not result
 
 
-@patch('web_crawler.helpers.requests.get')
+@patch("web_crawler.helpers.requests.get")
 def test_request_document_not_ok(mock_get):
     # Arrange:
     url = "https://example.com"
@@ -65,14 +65,14 @@ def test_request_document_not_ok(mock_get):
         ("https://sgbarker.com", "/about/", "https://sgbarker.com/about/"),
         ("https://sgbarker.com", "about/", "https://sgbarker.com/about/"),
         (
-                "https://en.wikipedia.org",
-                "/wiki/Ludovic_Laborderie",
-                "https://en.wikipedia.org/wiki/Ludovic_Laborderie",
+            "https://en.wikipedia.org",
+            "/wiki/Ludovic_Laborderie",
+            "https://en.wikipedia.org/wiki/Ludovic_Laborderie",
         ),
         (
-                "https://www.sgbarker.com",
-                "about/contact/something",
-                "https://www.sgbarker.com/about/contact/something",
+            "https://www.sgbarker.com",
+            "about/contact/something",
+            "https://www.sgbarker.com/about/contact/something",
         ),
     ],
 )

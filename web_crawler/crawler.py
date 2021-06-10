@@ -1,11 +1,9 @@
-import logging
 import re
 import time
 from concurrent.futures import ThreadPoolExecutor
 from queue import Queue, Empty
-from typing import List, Optional
+from typing import List
 
-import requests
 from bs4 import BeautifulSoup
 
 from web_crawler.exceptions import InvalidInputException
@@ -33,6 +31,7 @@ class Crawler:
         for link in soup.find_all("a", href=True):
             href = link.get("href")
 
+            # Most likely an anchor link or a 'javascript' link, ignore these.
             if href.startswith("#"):
                 continue
 
@@ -58,7 +57,7 @@ class Crawler:
                 if link.href not in self.processed_links:
                     self.processed_links.add(link.href)
                     self.pool.submit(self.crawl, link.href)
-
+            # When the queue is empty
             except Empty:
                 self.end_time = time.time()
                 return
