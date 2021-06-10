@@ -8,19 +8,6 @@ from web_crawler.exceptions import InvalidInputException
 from web_crawler.link import Link
 
 
-def crawl_for_urls(input):
-    pass
-
-
-def test_crawler():
-    # Arrange
-    input = Crawler(start_url="https://sgbarker.com")
-    # Act
-    crawl_for_urls(input)
-
-    # Assert
-
-
 def test_parse_and_get_links():
     # Arrange
     start_url = "https://sgbarker.com"
@@ -83,4 +70,4 @@ def test_input_validator_raises_exception_when_invalid(input: Dict[str, str]):
     # Act
     # Assert
     with pytest.raises(InvalidInputException):
-        result = crawler.validate_start_url()
+        crawler.validate_start_url()

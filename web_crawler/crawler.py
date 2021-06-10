@@ -54,7 +54,7 @@ class Crawler:
 
         while True:
             try:
-                link = self.unprocessed_links.get(timeout=1)
+                link = self.unprocessed_links.get(timeout=4)
                 if link.href not in self.processed_links:
                     self.processed_links.add(link.href)
                     self.pool.submit(self.crawl, link.href)

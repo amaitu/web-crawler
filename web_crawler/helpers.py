@@ -20,7 +20,7 @@ def request_document(url: str) -> Optional[str]:
     # in seconds
     time.sleep(0.5)
     print(f"\n fetching url {url}")
-    response = requests.get(url, timeout=3)
+    response = requests.get(url, timeout=5)
 
     if response.status_code not in [200]:
         logging.warning(

@@ -13,4 +13,5 @@
 ## Known limitations / gotchas
  - The crawler will treat mixed content links as external, i.e. `http` links on a `https` page.
  - No backoff / handling of 429s or other non-200 responses.
- - No end-to-end tests
+ - Unit test coverage on crawler could be improved.
+ - No end-to-end tests.
