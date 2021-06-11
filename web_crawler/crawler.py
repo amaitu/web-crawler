@@ -16,7 +16,7 @@ class Crawler:
         self.start_url = start_url
         self.start_time = None
         self.end_time = None
-        self.pool = ThreadPoolExecutor(max_workers=10)
+        self.executor = ThreadPoolExecutor(max_workers=10)
         self.processed_links = set()
         self.parsed_hrefs = []
         self.unprocessed_links = Queue()
@@ -35,7 +35,7 @@ class Crawler:
             if href.startswith("#"):
                 continue
 
-            # if it's a relative url, concatenate the relative url to the start_url to make it absolute:
+            # if it's a relative url, concatenate with the start_url to make it absolute:
             if not href.startswith("http"):
                 href = convert_relative_to_absolute_url(self.start_url, href)
 
@@ -56,7 +56,7 @@ class Crawler:
                 link = self.unprocessed_links.get(timeout=4)
                 if link.href not in self.processed_links:
                     self.processed_links.add(link.href)
-                    self.pool.submit(self.crawl, link.href)
+                    self.executor.submit(self.crawl, link.href)
             # When the queue is empty
             except Empty:
                 self.end_time = time.time()

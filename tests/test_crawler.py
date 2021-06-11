@@ -2,7 +2,7 @@ from typing import Dict
 
 import pytest
 
-from tests.helpers import TEST_DATA_DIR
+from tests.constants import TEST_DATA_DIR
 from web_crawler.crawler import Crawler
 from web_crawler.exceptions import InvalidInputException
 from web_crawler.link import Link
@@ -41,6 +41,7 @@ def test_parse_and_get_links():
         {"start_url": "http://monzo.com"},
         {"start_url": "https://www.monzo.com"},
         {"start_url": "http://www.monzo.com"},
+        {"start_url": "https://community.monzo.com"},
         {"start_url": "https://visit.london"},
     ],
 )
