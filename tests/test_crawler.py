@@ -37,11 +37,11 @@ def test_parse_and_get_links():
 @pytest.mark.parametrize(
     "input",
     [
-        {"start_url": "https://monzo.com"},
-        {"start_url": "http://monzo.com"},
-        {"start_url": "https://www.monzo.com"},
-        {"start_url": "http://www.monzo.com"},
-        {"start_url": "https://community.monzo.com"},
+        {"start_url": "https://example.com"},
+        {"start_url": "http://example.com"},
+        {"start_url": "https://www.example.com"},
+        {"start_url": "http://www.example.com"},
+        {"start_url": "https://sub.example.com"},
         {"start_url": "https://visit.london"},
     ],
 )
@@ -60,8 +60,8 @@ def test_input_validator_returns_true_when_valid(input: Dict[str, str]):
         {"start_url": "invalid"},
         {"start_url": " "},
         {"start_url": ""},
-        {"start_url": "www.monzo.com"},
-        {"start_url": "monzo.com"},
+        {"start_url": "www.example.com"},
+        {"start_url": "example.com"},
         {"start_url": "visit.london"},
     ],
 )

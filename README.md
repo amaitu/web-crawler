@@ -1,4 +1,5 @@
 # web-crawler
+Takes an input URL and crawls it, outputting all the links found on that page. Will then crawl other urls found on that page, provided they are on the same domain. Subdomains are treated as different domains. 
 
 ## To install
 1. Install [Poetry](https://python-poetry.org/docs/) and [Python >= 3.7](https://www.python.org/downloads/) on your system.
